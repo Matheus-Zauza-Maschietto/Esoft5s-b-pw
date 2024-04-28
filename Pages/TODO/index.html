@@ -13,11 +13,13 @@
         <h1>Todo List</h1>
     </header>
     <main>
-        <input type="text" name="" id="input">
-        <button>Adicionar tarefa</button>
-        <ul id="listaTODO">
-
-        </ul>
+        <form onsubmit="adicionarTarefa(event)">
+            <label for="input">Adicionar Tarefa</label>
+            <input type="text" name="" id="input">
+            <button>Adicionar tarefa</button>
+            <ul id="listaTODO">
+            </ul>
+        </form>
     </main>
 
     <footer aria-label="Rodapé">
