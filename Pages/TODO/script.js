@@ -93,5 +93,5 @@ function getItemHtml(task) {
 }
 
 function getInnerHtml(task) {
-    return `<h2>${task.title}</h2><p>${task.description}</p><button class="edit" onclick="openEdit(this)">✏️</button>`
+    return `<h2>${task.title}</h2><p>${task.description}</p><button class="edit" title="Editar Tarefa" onclick="openEdit(this)">✏️</button>`
 }
