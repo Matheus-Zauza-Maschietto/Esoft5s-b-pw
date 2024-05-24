@@ -13,13 +13,24 @@
         <h1>Todo List</h1>
     </header>
     <main>
-        <form onsubmit="adicionarTarefa(event)">
-            <label for="input">Adicionar Tarefa</label>
-            <input type="text" name="" id="input">
-            <button>Adicionar tarefa</button>
-            <ul id="listaTODO">
-            </ul>
+        <form onsubmit="adicionarTarefa(event)" id="taskForm">
+            <input type="text" name="title" id="title" required placeholder="Informe o título da tarefa" />
+            <textarea id="description" name="description" required
+                placeholder="Informe a descrição da tarefa"></textarea>
+            <button type="submit">Salvar Tarefa</button>
         </form>
+        <ul id="taskList"></ul>
+        <dialog>
+            <form id="editForm" method="dialog" onsubmit="saveEdit(event)">
+                <input type="text" name="title" id="title" required placeholder="Informe o título da tarefa" />
+                <textarea id="description" name="description" required
+                    placeholder="Informe a descrição da tarefa"></textarea>
+                <div>
+                    <button type="submit">Editar Tarefa</button>
+                    <button type="reset" onclick="closeModal()">Cancelar</button>
+                </div>
+            </form>
+        </dialog>
     </main>
 
     <footer aria-label="Rodapé">
