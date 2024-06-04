@@ -46,7 +46,7 @@ function adicionarLocalStorage(novaTarefa) {
 }
 
 function openEdit(elem) {
-    const id = elem.parentElement.getAttribute('idli')
+    const id = elem.parentElement.parentElement.getAttribute('idli')
     const form = document.querySelector('#editForm')
     form.idli = id;
     const formData = new FormData(form)
@@ -88,10 +88,24 @@ function closeModal() {
     modal.close()
 }
 
+function deleteTask(element){
+    const id = element.parentElement.parentElement.getAttribute('idli')
+    let tarefas = JSON.parse(localStorage.getItem(taskKey));
+
+    if (tarefas === null) {
+        tarefas = []
+    }
+
+    const newTarefas = tarefas.filter(p => p.id != id)
+    
+    localStorage.setItem('tarefas', JSON.stringify(newTarefas));
+    carregarTarefas()
+}
+
 function getItemHtml(task) {
     return `<li idli="${task.id}" >${getInnerHtml(task)}</li>`
 }
 
 function getInnerHtml(task) {
-    return `<h2>${task.title}</h2><p>${task.description}</p><button class="edit" title="Editar Tarefa" onclick="openEdit(this)">✏️</button>`
+    return `<h2>${task.title}</h2><p>${task.description}</p><div id="action-buttons"><button class="edit" title="Editar Tarefa" onclick="openEdit(this)">✏️</button><button class="delete" title="Deletar Tarefa" onclick="deleteTask(this)">❌</button></div>`
 }
